@@ -17,18 +17,16 @@ public class FilmeServlet extends HttpServlet {
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException{
         String nomefilme = req.getParameter("nomefilme");
 
-        System.out.println("nomefilme: "  + nomefilme);
+        System.out.println("nomefilme: " + nomefilme);
         Filme filme = new Filme(nomefilme);
-        new FilmeService().inserirFilmes(filme);
+        boolean inseridoComSucesso = new FilmeService().inserirFilmes(filme);
         RequestDispatcher rd = req.getRequestDispatcher("WEB-INF/pages/cadastrarfilmes.jsp");
-
-        if(new FilmeService().inserirFilmes(filme)){
+        if (inseridoComSucesso) {
             req.setAttribute("retornofilme", "Filme inserido com sucesso!");
         } else {
             req.setAttribute("retornofilme", "Erro ao inserir filme!");
         }
         rd.forward(req, resp);
-
     }
 
     @Override
@@ -42,19 +40,24 @@ public class FilmeServlet extends HttpServlet {
             if (opcao.equals("excluir")) {
                 Integer idfilme = Integer.parseInt(req.getParameter("idfilme"));
                 new FilmeService().excluirFilmes(idfilme);
+                resp.sendRedirect("filmes?page=ver");
             } else if (opcao.equals("editar")) {
-                // Lógica para editar o filme, se necessário
+
             }
         }
 
 
         List<Filme> filmes = new FilmeService().listarFilmes();
         req.setAttribute("filmes", filmes);
-        if (opcao == null || !opcao.equals("editar")) {
+        String page = req.getParameter("page");
+        if ("cadastrar".equals(page)) {
+            RequestDispatcher rd = req.getRequestDispatcher("WEB-INF/pages/cadastrarfilmes.jsp");
+            rd.forward(req, resp);
+        } else if ("ver".equals(page)) {
             RequestDispatcher rd = req.getRequestDispatcher("WEB-INF/pages/verfilmes.jsp");
             rd.forward(req, resp);
-        } else if(opcao.equals("excluir")) {
-            RequestDispatcher rd = req.getRequestDispatcher("WEB-INF/pages/cadastrarfilmes.jsp");
+        } else if("dash".equals(page)) {
+            RequestDispatcher rd = req.getRequestDispatcher("WEB-INF/pages/dashboard.jsp");
             rd.forward(req, resp);
         }
     }

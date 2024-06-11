@@ -42,3 +42,14 @@
 .nav-link{
     color: white;
 }
+
+.card {
+    margin-bottom: 20px;
+}
+.card-header {
+    background-color: #007bff;
+    color: white;
+}
+.card-body {
+    padding: 20px;
+}

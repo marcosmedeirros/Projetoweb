@@ -35,10 +35,11 @@ CREATE TABLE filme(
 );
 
 CREATE TABLE avaliacao(
+    idavaliacao serial PRIMARY KEY,
     idfilme INT REFERENCES filme(idfilme),
-    idusuario INT REFERENCES usuario(id),
-    nota FLOAT NOT NULL
+    nota FLOAT
 );
+
 
 INSERT INTO usuario (nome, email, senha)
 VALUES ('João Silva', 'joao@yahoo.com', 'senha123');

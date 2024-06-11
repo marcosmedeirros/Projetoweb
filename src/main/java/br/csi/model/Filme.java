@@ -3,7 +3,7 @@ package br.csi.model;
 public class Filme {
     public Integer idfilme;
     public String nomefilme;
-    public Integer notamedia;
+    public Float notamedia;
 
 
     public Filme(Integer idfilme, String nomefilme) {
@@ -31,11 +31,11 @@ public class Filme {
         this.nomefilme = nomefilme;
     }
 
-    public Integer getNotamedia() {
+    public Float getNotamedia() {
         return notamedia;
     }
 
-    public void setNotamedia(Integer notamedia) {
+    public void setNotamedia(Float notamedia) {
         this.notamedia = notamedia;
     }
 }

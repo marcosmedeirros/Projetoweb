@@ -20,8 +20,7 @@ public class LoginServelet extends HttpServlet {
         System.out.println(nome + " " + senha);
 
         if(new LoginService().login(nome, senha)){
-            RequestDispatcher rd = req.getRequestDispatcher("WEB-INF/pages/dashboard.jsp");
-            rd.forward(req, resp);
+            resp.sendRedirect("filmes?page=dash");
         } else {
             RequestDispatcher rd = req.getRequestDispatcher("/index.jsp");
             req.setAttribute("erro", "Email ou senha inválidos");
