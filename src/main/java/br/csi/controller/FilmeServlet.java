@@ -49,6 +49,11 @@ public class FilmeServlet extends HttpServlet {
 
         List<Filme> filmes = new FilmeService().listarFilmes();
         req.setAttribute("filmes", filmes);
+
+
+
+
+
         String page = req.getParameter("page");
         if ("cadastrar".equals(page)) {
             RequestDispatcher rd = req.getRequestDispatcher("WEB-INF/pages/cadastrarfilmes.jsp");

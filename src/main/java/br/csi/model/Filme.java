@@ -6,9 +6,10 @@ public class Filme {
     public Float notamedia;
 
 
-    public Filme(Integer idfilme, String nomefilme) {
+    public Filme(Integer idfilme, String nomefilme, float notamedia) {
         this.idfilme = idfilme;
         this.nomefilme = nomefilme;
+        this.notamedia = notamedia;
     }
 
     public Filme(String nomefilme) {

@@ -18,7 +18,7 @@ public class AvaliacaoServlet extends HttpServlet {
             int idFilme = Integer.parseInt(request.getParameter("idfilme"));
             float nota = Float.parseFloat(request.getParameter("nota"));
 
-        System.out.println("caraio" + idFilme + " " + nota);
+        System.out.println("funcionaaa" + idFilme + " " + nota);
 
             Avaliacao avaliacao = new Avaliacao(idFilme, nota);
             AvaliacaoService avaliacaoService = new AvaliacaoService();
@@ -36,6 +36,7 @@ public class AvaliacaoServlet extends HttpServlet {
             Float nota = Float.parseFloat(req.getParameter("nota"));
             System.out.println("ID: " + idfilme + " Nota: " + nota);
             new AvaliacaoService().cadastrarAvaliacao(new Avaliacao(idfilme, nota));
+
             resp.sendRedirect("filmes?page=ver");
         }
 

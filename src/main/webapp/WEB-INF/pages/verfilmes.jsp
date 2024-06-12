@@ -50,16 +50,17 @@
         <c:forEach var="filme" items="${filmes}">
             <tr>
                 <td>${filme.nomefilme}</td>
+                <td>${filme.notamedia}</td>
                 <td>
                     <a href="filmes?opcao=excluir&idfilme=${filme.idfilme}" class="btn btn-danger">Excluir</a>
 
                     <form action="avaliacao" method="post">
                         <div class="form-group">
                             <input hidden name="idfilme"  value ="${filme.idfilme}">
-                            <label for="nota">Nome</label>
+                            <label for="nota">Nota</label>
                             <input type="number" class="form-control" name="nota" id="nota" placeholder="Nota">
                         </div>
-                        <button type="submit" class = "btn btn-primary">Avaliacar CARAIO</button>
+                        <button type="submit" class = "btn btn-primary">Avaliar</button>
                     </form>
                 </td>
             </tr>

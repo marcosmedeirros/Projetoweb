@@ -21,5 +21,9 @@ public class FilmeService {
         return new Filmedao().getFilmes();
     }
 
+    public boolean atualizandonotaFilmes(Integer id, Float nota) {
+        return new Filmedao().atualizandonotaFilmes(id, nota);
+    }
+
 
 }

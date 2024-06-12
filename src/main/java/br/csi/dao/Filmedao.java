@@ -20,7 +20,8 @@ public class Filmedao {
             while (rs.next()) {
                 Filme f = new Filme(
                         rs.getInt("idfilme"),
-                        rs.getString("nomefilme")
+                        rs.getString("nomefilme"),
+                        rs.getFloat("notamedia")
                 );
                 filmes.add(f);
             }
@@ -54,6 +55,40 @@ public class Filmedao {
             stmt.execute(sql);
             System.out.println("SQL: " + sql);
             System.out.println("Filme excluído com sucesso!");
+            return true;
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+            return false;
+        }
+
+    }
+
+    public boolean notamediaFilmes(Integer idfilme) {
+        try {
+            Connection cdb = new ConectDBPostgres().getConecao();
+            Statement stmt = cdb.createStatement();
+            String sql = "SELECT AVG(nota) FROM avaliacao WHERE idfilme = " + idfilme;
+            stmt.execute(sql);
+            System.out.println("SQL: " + sql);
+            System.out.println("Nota média calculada com sucesso!");
+            return true;
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+            return false;
+        }
+
+    }
+
+    public boolean atualizandonotaFilmes(Integer idfilme, Float notamedia) {
+        try {
+            Connection cdb = new ConectDBPostgres().getConecao();
+            Statement stmt = cdb.createStatement();
+            String sql = "UPDATE filme f SET nota = (SELECT AVG(a.nota) FROM avaliacao a WHERE a.idfilme = f.idfilme)";
+            stmt.execute(sql);
+            System.out.println("SQL: " + sql);
+            System.out.println("Nota média atualizada com sucesso!");
             return true;
 
         } catch (SQLException e) {
