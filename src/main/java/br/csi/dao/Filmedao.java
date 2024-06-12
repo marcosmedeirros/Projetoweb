@@ -85,7 +85,9 @@ public class Filmedao {
         try {
             Connection cdb = new ConectDBPostgres().getConecao();
             Statement stmt = cdb.createStatement();
-            String sql = "UPDATE filme f SET nota = (SELECT AVG(a.nota) FROM avaliacao a WHERE a.idfilme = f.idfilme)";
+            String sql = "UPDATE filme f SET notamedia = (" +
+                    "  SELECT AVG(a.nota) FROM avaliacao a WHERE a.idfilme = f.idfilme" +
+                    ")";
             stmt.execute(sql);
             System.out.println("SQL: " + sql);
             System.out.println("Nota média atualizada com sucesso!");

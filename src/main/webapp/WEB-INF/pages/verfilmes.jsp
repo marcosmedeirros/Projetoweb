@@ -58,7 +58,7 @@
                         <div class="form-group">
                             <input hidden name="idfilme"  value ="${filme.idfilme}">
                             <label for="nota">Nota</label>
-                            <input type="number" class="form-control" name="nota" id="nota" placeholder="Nota">
+                            <input type="number" class="form-control" name="nota" max="5" step="0.1" id="nota" placeholder="Nota">
                         </div>
                         <button type="submit" class = "btn btn-primary">Avaliar</button>
                     </form>
@@ -69,18 +69,6 @@
     </table>
 </div>
 
-
-<footer class="footer">
-    <div class="container">
-        <img src="../../imgs/logo.png" alt="Logo">
-        <div class="contact-info">
-            <p>Contato: (55) 99432-5678<br>Email: traveling@gmail.com</p>
-        </div>
-        <div class="address-info">
-            <p>Endereço: Rua Roraima, 33202<br>Santa Maria RS, 97105-900</p>
-        </div>
-    </div>
-</footer>
 
 </body>
 </html>
