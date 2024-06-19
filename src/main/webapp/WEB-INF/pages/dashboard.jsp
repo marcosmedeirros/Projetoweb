@@ -34,32 +34,11 @@
     </div>
 </nav>
 
-<div class="container">
-    <h1 class="text-center mt-4">Lista de Filmes</h1>
-    <div class="row">
-        <c:forEach var="filme" items="${filmes}">
-            <div class="col-md-4 mb-4">
-                <div class="card">
-                    <div class="card-body">
-                        <img src="${filme.imagem}" class="card-img-top" alt="${filme.nomefilme}" style="height: 500px; object-fit: cover;">
-                        <h5 class="card-title">${filme.nomefilme}</h5>
-                        <p class="card-text">Nota: <script>document.write(parseFloat(${filme.notamedia}).toFixed(2));</script></p>
-                        <div class="d-flex justify-content-between align-items-center">
-                            <a href="filmes?opcao=excluir&idfilme=${filme.idfilme}" class="btn btn-danger btn-sm mr-2">Excluir</a>
-                            <form action="avaliacao" method="post">
-                                <input type="hidden" name="idfilme" value="${filme.idfilme}">
-                                <div class="form-group mb-2 mr-2">
-                                    <input type="number" class="form-control" name="nota" max="5.0" step="0.1" style="width: 80px;" placeholder="Nota" required>
-                                </div>
-                                <button type="submit" class="btn btn-primary btn-sm">Avaliar</button>
-                            </form>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </c:forEach>
-    </div>
-</div>
+
+
+
+
+
 
 
 </body>
